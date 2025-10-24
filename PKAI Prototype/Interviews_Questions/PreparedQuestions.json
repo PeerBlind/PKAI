@@ -1,0 +1,20 @@
+{
+    "Questions": [
+            "What is the primary goal of this process? This question helps to understand the overall purpose and what the process is intended to achieve.",
+            "How the process starts ? This question focuses on the events or conditions that initiate the process.",
+            "Describe the different activities of your process. For each activities, mention the actor responsible for that",
+            "What marks the completion of the process? Describe how the process can end.",
+            "Are there any other points you'd like to discuss? Do you have any comments on the diagram, which gives a very rough summary of the activities mentioned?"
+        ],
+
+    "Expected Outputs": [
+            "None",
+            "None",
+            "None",
+            "The answer should mention Process Trigger Condition and light Description of how the process starts", 
+            "The answer should explain who are doing what activities, the system supporting the activities and if relevant, what communication channel is used",
+            "The condition that validate the end of the process",
+            "None"
+        ]
+    
+}

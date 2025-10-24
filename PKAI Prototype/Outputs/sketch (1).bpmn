@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_2" targetNamespace="http://www.bpmn-sketch-miner.ai" exporter="BPMN Sketch Miner" exporterVersion="1.17.6.3337">
+ <bpmn:collaboration id="collaboration_3">
+ <bpmn:participant id="participant_7" name="" processRef="process_6"/>
+ <bpmn:participant id="participant_31" name="" processRef="process_30"/>
+</bpmn:collaboration>
+
+ <bpmn:process id="process_6" isExecutable="false">
+ <bpmn:laneSet id="laneSet_8">
+ <bpmn:lane id="lane_9" name="Sales Representative">
+ <bpmn:flowNodeRef>startEvent_10</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>task_receive_11</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>exclusiveGateway_12</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>task_13</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>exclusiveGateway_14</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>endEvent_15</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>endEvent_16</bpmn:flowNodeRef>
+
+</bpmn:lane>
+
+ <bpmn:lane id="lane_21" name="Customer">
+ <bpmn:flowNodeRef>endEvent_22</bpmn:flowNodeRef>
+
+ <bpmn:flowNodeRef>task_receive_23</bpmn:flowNodeRef>
+
+</bpmn:lane>
+
+ <bpmn:lane id="lane_26" name="Finance Department">
+ <bpmn:flowNodeRef>task_27</bpmn:flowNodeRef>
+
+</bpmn:lane>
+
+</bpmn:laneSet>
+
+ <bpmn:startEvent id="startEvent_10" name="Order Received">
+ <bpmn:messageEventDefinition/>
+ <bpmn:outgoing>sequenceFlow_17</bpmn:outgoing>
+
+</bpmn:startEvent>
+
+ <bpmn:receiveTask id="task_receive_11" name="Receive Order">
+ <bpmn:incoming>sequenceFlow_17</bpmn:incoming>
+
+ <bpmn:outgoing>sequenceFlow_19</bpmn:outgoing>
+
+</bpmn:receiveTask>
+
+ <bpmn:exclusiveGateway id="exclusiveGateway_12" name="Approve Order?">
+ <bpmn:outgoing>sequenceFlow_18</bpmn:outgoing>
+
+ <bpmn:incoming>sequenceFlow_19</bpmn:incoming>
+
+ <bpmn:outgoing>sequenceFlow_25</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+ <bpmn:task id="task_13" name="Process Order">
+ <bpmn:incoming>sequenceFlow_18</bpmn:incoming>
+
+ <bpmn:outgoing>sequenceFlow_28</bpmn:outgoing>
+
+</bpmn:task>
+
+ <bpmn:exclusiveGateway id="exclusiveGateway_14" name="Is Payment Received?">
+ <bpmn:outgoing>sequenceFlow_20</bpmn:outgoing>
+
+ <bpmn:incoming>sequenceFlow_29</bpmn:incoming>
+
+ <bpmn:outgoing>sequenceFlow_36</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+ <bpmn:endEvent id="endEvent_15" name="Payment Reminder
+Sent">
+ <bpmn:messageEventDefinition/>
+ <bpmn:incoming>sequenceFlow_20</bpmn:incoming>
+
+</bpmn:endEvent>
+
+ <bpmn:endEvent id="endEvent_16" name="Order Fulfilled">
+ <bpmn:messageEventDefinition/>
+ <bpmn:incoming>sequenceFlow_35</bpmn:incoming>
+
+</bpmn:endEvent>
+
+ <bpmn:sequenceFlow id="sequenceFlow_17" sourceRef="startEvent_10" targetRef="task_receive_11"/>
+ <bpmn:sequenceFlow id="sequenceFlow_18" sourceRef="exclusiveGateway_12" targetRef="task_13" name="Approved"/>
+ <bpmn:sequenceFlow id="sequenceFlow_19" sourceRef="task_receive_11" targetRef="exclusiveGateway_12"/>
+ <bpmn:sequenceFlow id="sequenceFlow_20" sourceRef="exclusiveGateway_14" targetRef="endEvent_15" name="No"/>
+ <bpmn:endEvent id="endEvent_22">
+ <bpmn:incoming>sequenceFlow_24</bpmn:incoming>
+
+</bpmn:endEvent>
+
+ <bpmn:receiveTask id="task_receive_23" name="Receive Rejection
+Notification">
+ <bpmn:outgoing>sequenceFlow_24</bpmn:outgoing>
+
+ <bpmn:incoming>sequenceFlow_25</bpmn:incoming>
+
+</bpmn:receiveTask>
+
+ <bpmn:sequenceFlow id="sequenceFlow_24" sourceRef="task_receive_23" targetRef="endEvent_22"/>
+ <bpmn:sequenceFlow id="sequenceFlow_25" sourceRef="exclusiveGateway_12" targetRef="task_receive_23" name="Rejected"/>
+ <bpmn:task id="task_27" name="Process Payment">
+ <bpmn:incoming>sequenceFlow_28</bpmn:incoming>
+
+ <bpmn:outgoing>sequenceFlow_29</bpmn:outgoing>
+
+</bpmn:task>
+
+ <bpmn:sequenceFlow id="sequenceFlow_28" sourceRef="task_13" targetRef="task_27"/>
+ <bpmn:sequenceFlow id="sequenceFlow_29" sourceRef="task_27" targetRef="exclusiveGateway_14"/>
+</bpmn:process>
+
+ <bpmn:process id="process_30" isExecutable="false">
+ <bpmn:laneSet id="laneSet_32">
+ <bpmn:lane id="lane_33" name="Logistics Department">
+ <bpmn:flowNodeRef>task_34</bpmn:flowNodeRef>
+
+</bpmn:lane>
+
+</bpmn:laneSet>
+
+ <bpmn:task id="task_34" name="Ship Product">
+ <bpmn:outgoing>sequenceFlow_35</bpmn:outgoing>
+
+ <bpmn:incoming>sequenceFlow_36</bpmn:incoming>
+
+</bpmn:task>
+
+ <bpmn:sequenceFlow id="sequenceFlow_35" sourceRef="task_34" targetRef="endEvent_16"/>
+ <bpmn:sequenceFlow id="sequenceFlow_36" sourceRef="exclusiveGateway_14" targetRef="task_34" name="Yes"/>
+</bpmn:process>
+
+ <bpmndi:BPMNDiagram id="BPMNDiagram_4">
+ <bpmndi:BPMNPlane id="BPMNPlane_5" bpmnElement="collaboration_3">
+ <bpmndi:BPMNShape id="participant_7_di" bpmnElement="participant_7" isHorizontal="false">
+ <dc:Bounds x="0" y="40" width="367" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="lane_9_di" bpmnElement="lane_9" isHorizontal="false">
+ <dc:Bounds x="0" y="40" width="367" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="startEvent_10_di" bpmnElement="startEvent_10" isHorizontal="false">
+ <dc:Bounds x="170" y="75" width="20" height="20"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="152" y="76" width="108" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="task_receive_11_di" bpmnElement="task_receive_11" isHorizontal="false">
+ <dc:Bounds x="120" y="119" width="120" height="39"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="145" y="119" width="120" height="39"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="exclusiveGateway_12_di" bpmnElement="exclusiveGateway_12" isHorizontal="false">
+ <dc:Bounds x="155" y="187" width="50" height="50"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="204" y="199" width="112" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="task_13_di" bpmnElement="task_13" isHorizontal="false">
+ <dc:Bounds x="71" y="333" width="121" height="39"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="96" y="333" width="121" height="39"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="exclusiveGateway_14_di" bpmnElement="exclusiveGateway_14" isHorizontal="false">
+ <dc:Bounds x="179" y="473" width="50" height="50"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="208" y="485" width="154" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="endEvent_15_di" bpmnElement="endEvent_15" isHorizontal="false">
+ <dc:Bounds x="169" y="646" width="20" height="20"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="137" y="639" width="136" height="35"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="endEvent_16_di" bpmnElement="endEvent_16" isHorizontal="false">
+ <dc:Bounds x="169" y="700" width="20" height="20"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="154" y="701" width="102" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_17_di" bpmnElement="sequenceFlow_17">
+ <di:waypoint x="180" y="94"/>
+ <di:waypoint x="180" y="119"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_18_di" bpmnElement="sequenceFlow_18">
+ <di:waypoint x="160" y="231"/>
+ <di:waypoint x="131" y="266"/>
+ <di:waypoint x="131" y="300"/>
+ <di:waypoint x="131" y="333"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="175" y="266" width="68" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_19_di" bpmnElement="sequenceFlow_19">
+ <di:waypoint x="180" y="158"/>
+ <di:waypoint x="180" y="183"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_20_di" bpmnElement="sequenceFlow_20">
+ <di:waypoint x="193" y="517"/>
+ <di:waypoint x="179" y="552"/>
+ <di:waypoint x="179" y="586"/>
+ <di:waypoint x="179" y="611"/>
+ <di:waypoint x="179" y="638"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="199" y="552" width="20" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNShape id="lane_21_di" bpmnElement="lane_21" isHorizontal="false">
+ <dc:Bounds x="367" y="40" width="238" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="endEvent_22_di" bpmnElement="endEvent_22" isHorizontal="false">
+ <dc:Bounds x="475" y="415" width="20" height="20"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="task_receive_23_di" bpmnElement="task_receive_23" isHorizontal="false">
+ <dc:Bounds x="412" y="325" width="145" height="55"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="437" y="325" width="20" height="20"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_24_di" bpmnElement="sequenceFlow_24">
+ <di:waypoint x="485" y="380"/>
+ <di:waypoint x="485" y="415"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_25_di" bpmnElement="sequenceFlow_25">
+ <di:waypoint x="201" y="231"/>
+ <di:waypoint x="229" y="266"/>
+ <di:waypoint x="229" y="300"/>
+ <di:waypoint x="412" y="338"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="270" y="266" width="62" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNShape id="lane_26_di" bpmnElement="lane_26" isHorizontal="false">
+ <dc:Bounds x="600" y="40" width="224" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="task_27_di" bpmnElement="task_27" isHorizontal="false">
+ <dc:Bounds x="648" y="405" width="142" height="39"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="673" y="405" width="142" height="39"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_28_di" bpmnElement="sequenceFlow_28">
+ <di:waypoint x="192" y="360"/>
+ <di:waypoint x="648" y="416"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_29_di" bpmnElement="sequenceFlow_29">
+ <di:waypoint x="648" y="434"/>
+ <di:waypoint x="228" y="490"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNShape id="participant_31_di" bpmnElement="participant_31" isHorizontal="false">
+ <dc:Bounds x="845" y="40" width="183" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="lane_33_di" bpmnElement="lane_33" isHorizontal="false">
+ <dc:Bounds x="845" y="40" width="183" height="714"/>
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNShape id="task_34_di" bpmnElement="task_34" isHorizontal="false">
+ <dc:Bounds x="880" y="636" width="113" height="39"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="905" y="636" width="113" height="39"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_35_di" bpmnElement="sequenceFlow_35">
+ <di:waypoint x="880" y="660"/>
+ <di:waypoint x="288" y="702"/>
+</bpmndi:BPMNEdge>
+
+ <bpmndi:BPMNEdge id="sequenceFlow_36_di" bpmnElement="sequenceFlow_36">
+ <di:waypoint x="228" y="516"/>
+ <di:waypoint x="266" y="552"/>
+ <di:waypoint x="266" y="586"/>
+ <di:waypoint x="266" y="611"/>
+ <di:waypoint x="880" y="652"/>
+ <bpmndi:BPMNLabel>
+ <dc:Bounds x="288" y="552" width="24" height="19"/>
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+</bpmndi:BPMNPlane>
+
+</bpmndi:BPMNDiagram>
+
+</bpmn:definitions>
+<!--
+Exported by BPMN Sketch Miner 1.17.6.3337
+
+Sales Representative:
+Sales Representative:(Receive Order Received) 
+Sales Representative:Receive Order 
+Approve Order? 
+Rejected 
+Customer:Receive Rejection Notification 
+
+Sales Representative:(Receive Order Received) 
+Sales Representative:Receive Order 
+Approve Order? 
+Approved 
+Sales Representative:Process Order 
+Finance Department:Process Payment 
+Is Payment Received? 
+No 
+(Send Payment Reminder Sent) 
+
+Sales Representative:(Receive Order Received) 
+Sales Representative:Receive Order 
+Approve Order? 
+Approved 
+Sales Representative:Process Order 
+Finance Department:Process Payment 
+Is Payment Received? 
+Yes 
+Logistics Department:Ship Product 
+(Send Order Fulfilled) 
+
+
+-->
