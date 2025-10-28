@@ -1,6 +1,8 @@
 # PKAI
 Large Language Models for Process Knowledge Acquisition: Designing and Evaluating a Multi-Agent System
 
+<img width="1386" height="956" alt="Figure 6" src="https://github.com/user-attachments/assets/5f00b4aa-7e90-44c6-af3b-c761cad17c77" />
+
 
 # Usage
  TO use PKAI Artifact: 
