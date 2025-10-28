@@ -181,7 +181,7 @@ def checkInfo(question, prompt):
                    {"role": "user", "content":"Here is the answer to the question: " + str(prompt)},
                    {"role": "system", "content":"It seems that the answer doesn't provide all required information, generate a follow up question or reformulate the questions. Output must be only the question without any other comments."},
                    {"role": "user", "content":"No more than 1 question in the output"}],
-        max_tokens=2,
+        max_tokens= None,
         n=1,
         stop=None,
         temperature=0.01, 
@@ -277,4 +277,5 @@ def Reporting(ProcessFlow, ProcessMemory, Memory, feedback):
 
     # Save the document
     doc.save("Outputs.docx")
+
 
