@@ -184,7 +184,7 @@ def checkInfo(question, prompt):
         max_tokens= None,
         n=1,
         stop=None,
-        temperature=0.01, 
+        temperature=0.5, 
         model= model
         )
         response = response.choices[0].message.content
@@ -277,5 +277,6 @@ def Reporting(ProcessFlow, ProcessMemory, Memory, feedback):
 
     # Save the document
     doc.save("Outputs.docx")
+
 
 
