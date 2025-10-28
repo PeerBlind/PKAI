@@ -18,6 +18,7 @@ https://zenodo.org/records/15799395?token=eyJhbGciOiJIUzUxMiJ9
 Create this file (".env") and set up environment variables!
 https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key
 OPENAI_API_KEY= ""
+
 LLM_MODEL=gpt-4o
 
 The artifact has been tested mainly with gpt-4o but choose your model. See all Open AI models you can use here - https://platform.openai.com/docs/models
