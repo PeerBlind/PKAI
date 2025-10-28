@@ -1,7 +1,7 @@
 # PKAI
 Large Language Models for Process Knowledge Acquisition: Designing and Evaluating a Multi-Agent System
 
-<img width="1386" height="956" alt="Figure 6" src="https://github.com/user-attachments/assets/5f00b4aa-7e90-44c6-af3b-c761cad17c77" />
+![Figure 4](https://github.com/user-attachments/assets/8774bb48-16a5-41e1-b73c-b086cf45d336)
 
 
 # Usage
@@ -13,7 +13,9 @@ Large Language Models for Process Knowledge Acquisition: Designing and Evaluatin
 # Demo
 https://zenodo.org/records/15799395?token=eyJhbGciOiJIUzUxMiJ9
 
+<img width="756" height="524" alt="Figure 7" src="https://github.com/user-attachments/assets/b99f99b7-4b83-4135-8c9e-d0a9d6357ae1" />
 
+![Figure 8](https://github.com/user-attachments/assets/c213e908-93cf-44ec-83b5-898e2df942e1)
 
 
 # .env file 
