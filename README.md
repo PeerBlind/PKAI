@@ -12,11 +12,11 @@ Large Language Models for Process Knowledge Acquisition: Designing and Evaluatin
  
 # Demo
 https://zenodo.org/records/15799395?token=eyJhbGciOiJIUzUxMiJ9
+![Illustration Github](https://github.com/user-attachments/assets/bdc188ec-bf50-48e9-9f57-49708e17bf51)
 
-Elicitation session Example (Pizza delivery process):
-<img width="756" height="524" alt="Figure 7" src="https://github.com/user-attachments/assets/b99f99b7-4b83-4135-8c9e-d0a9d6357ae1" />
+Elicitation session example (candidate hiring process):
 
-Process model Example (Candidate Hiring process):
+Process model example (candidate hiring process):
 ![Figure 8](https://github.com/user-attachments/assets/c213e908-93cf-44ec-83b5-898e2df942e1)
 
 
